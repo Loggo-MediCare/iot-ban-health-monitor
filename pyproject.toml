@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iot-ban-health-monitor"
+version = "0.1.0"
+description = "SIMULATION ONLY: IoT body-area-network vital-sign monitor (sensors -> Raspberry Pi gateway -> GSM -> cloud DB -> alerts). Not a medical device."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary - research prototype" }
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+serial = ["pyserial>=3.5"]  # only for a real SIM800-class modem
+
+[project.scripts]
+banmon = "banmon.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
